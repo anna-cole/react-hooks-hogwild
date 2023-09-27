@@ -1,16 +1,16 @@
 import React from 'react'
 
-function HogDetails({ detailsArr }) {
+function HogDetails({ hogs }) {
   return (
     <div>
-      {detailsArr.map(hogDetails => {
+      {hogs.map(hog => {
         return (
-        <ul key={hogDetails.name}>
-          <li>{`Name: ${hogDetails.name}`}</li>
-          <li>{`Specialty: ${hogDetails.specialty}`}</li>
-          <li>{`Greased: ${hogDetails.greased ? 'yes' : 'no'}`}</li>
-          <li>{`Weight: ${hogDetails.weight} lbs`}</li>
-          <li className='achievementText'>{`Highest medal achieved: ${hogDetails['highest medal achieved']}`}</li>
+        <ul key={hog.name}>
+          <li>{`Name: ${hog.name}`}</li>
+          <li>{`Specialty: ${hog.specialty}`}</li>
+          <li>{`Greased: ${hog.greased ? 'yes' : 'no'}`}</li>
+          <li>{`Weight: ${hog.weight} lbs`}</li>
+          <li className='achievementText'>{`Highest medal achieved: ${hog['highest medal achieved']}`}</li>
         </ul>
         )
       })}

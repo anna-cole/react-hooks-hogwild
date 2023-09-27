@@ -1,16 +1,16 @@
 import React from "react";
 
-function Filter({ onGreaseChange, selectedGrease }) {
+function Filter({ selectedGrease, onChangeFilter, selectedSort, onChangeSort}) {
   return (
     <div className="filterWrapper" >
       <span >
-      <select name="filter" value={selectedGrease} onChange={onGreaseChange}>
-        <option value="All">Filter by greased</option>
+      <select name="filter" value={selectedGrease} onChange={onChangeFilter}>
+        <option value="All">Filter by</option>
         <option value="Greased">Greased</option>
         <option value="Not greased">Not greased</option>
       </select>
-      <select name="sort" >
-        <option value="All">Sort</option>
+      <select name="sort" value={selectedSort} onChange={onChangeSort}>
+        <option value="All">Sort by</option>
         <option value="Name">Name</option>
         <option value="Weight">Weight</option>
       </select>
