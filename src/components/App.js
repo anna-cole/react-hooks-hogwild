@@ -24,58 +24,29 @@ function App() {
   }
 
   const detailsArr = hogArr.filter(hog => hog.name === name)
+	// display hog details when clicking on the tile
 
 	const filteredArr = hogArr.filter(hog => {
-    if (selectedGrease === 'All') {
-      return true
-    } else if (selectedGrease === "Greased") {
-      return hog.greased === true
-    } else if (selectedGrease === "Not greased") {
-			return hog.greased === false
-		}
+    if (selectedGrease === 'All') {return true} 
+		if (selectedGrease === "Greased") {return hog.greased === true} 
+		else {return hog.greased === false}
   })
-
-	const copyFilteredArr = [...filteredArr]
-
-	const sortedByWeightArr = copyWeight.sort((a, b) => {
-		if (a.weight < b.weight) {
-			return -1
-		}
-		if (a.weight > b.weight) {
-			return 1
-		}
-		return 0
-	})
-
-	const sortedByNameArr = copyName.sort((a, b) => {
-		const nameA = a.name.toLowerCase()
-		const nameB = b.name.toLowerCase()
-		if (nameA < nameB) {
-			return -1
-		}
-		if (nameA > nameB) {
-			return 1
-		}
-		return 0
-	})
+	// filter hogs by greased or not greased and display in the hogBar
 	
-	const arrName = copyName.filter(hog => {
-    if (selectedSort === 'All') {
-      return true
-    } if (selectedSort === "Name") {
-      return sortedByNameArr
-    } 
-  })
-
-	const arrWeight = copyWeight.filter(hog => {
-    if (selectedSort === 'All') {
-      return true
-    } if (selectedSort === "Weight") {
-      return sortedByWeightArr
-    } 
-  })
-
-console.log(arrWeight)
+	filteredArr.sort((hog, hog2) => {
+		if (selectedSort === 'All') {return true}
+		// will display all hogs in the bar when 'sort by' is selected
+		if (selectedSort === 'Weight') {return hog.weight - hog2.weight}
+		// will sort by weight if Weight is selected. Use the logic for sorting array of objects when value is a number.
+		else {
+			let hogLower = hog.name.toLowerCase();
+			let hog2Lower = hog2.name.toLowerCase();
+			if (hogLower < hog2Lower) {return -1;}
+			if (hogLower > hog2Lower) {return 1;}
+			return 0;
+		}
+		// will sort by name if the other 2 options are not selected. Use the logic for sorting array of objects when value is a string.
+	})
 
 	return (
 		<div className="App">
